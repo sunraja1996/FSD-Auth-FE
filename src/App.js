@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import { toast, ToastContainer } from 'react-toastify';
+import React from 'react';
+import ProdectedRoute from './components/ProdectedRoute';
+import Register from './components/Register';
+import Otp from './components/Otp';
+import Profile from './components/Profile';
+import UserProfile from './components/Userprofile';
+
+export const CommonContext = React.createContext();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <CommonContext.Provider value={{toast}}>
+      <BrowserRouter>
+      <Routes>
+        <Route path='/login' element= {<Login/>} />
+        <Route path='/register' element={<Register/>}/>
+        <Route path = '/Otp' element={<Otp/>}></Route>
+        <Route path='/dashboard' element={ <ProdectedRoute> <Dashboard/> </ProdectedRoute> }  />
+        <Route path='/profile' element={ <ProdectedRoute> <Profile/> </ProdectedRoute> }  />
+        <Route path='/user' element={<UserProfile/>}/>
+        <Route path='*' element= {<Navigate to= '/login'/>} />
+        </Routes>
+        </BrowserRouter>
+        <ToastContainer/>
+        </CommonContext.Provider>
+    </>
   );
 }
 
