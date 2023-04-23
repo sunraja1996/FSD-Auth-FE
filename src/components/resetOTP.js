@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { CommonContext } from '../App';
 
 
-function Otp() {
+function ResetOTP() {
 
   let commonContext = useContext(CommonContext)
 
@@ -20,10 +20,10 @@ function Otp() {
     
     const login = async(e)=>{
         e.preventDefault(); 
-        let res = await axios.post(`${env.apiurl}/users/verify-email`, {email, otp})
-        if(res.data.statusCode === 200)
+        let resp = await axios.post(`${env.apiurl}/users/verify-otp`, {email, otp})
+        if(resp.data.statusCode === 200)
         {
-          commonContext.toast.success('Register Successfully', {
+          commonContext.toast.success('OTP Verified Successfully', {
               position: "top-right",
               autoClose: 3000,
               hideProgressBar: false,
@@ -34,13 +34,13 @@ function Otp() {
               theme: "dark",
                 });
 
-          setTimeout(() => {
-            navigate('/login')
-          })
+                setTimeout(() => {
+                  navigate('/updatepassword');
+                });
            
         }
         else{
-          commonContext.toast.error(res.data.message, {
+          commonContext.toast.error(resp.data.message, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -81,4 +81,4 @@ function Otp() {
   )
 }
 
-export default Otp
+export default ResetOTP

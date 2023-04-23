@@ -14,7 +14,8 @@ import { CommonContext } from '../App';
 
 function Dashboard() {
 
-  
+  const commonContext = useContext(CommonContext);
+
   let [data, setData] = useState([])
   let navigate = useNavigate()
 

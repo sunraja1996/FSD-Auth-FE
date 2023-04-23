@@ -9,6 +9,9 @@ import Register from './components/Register';
 import Otp from './components/Otp';
 import Profile from './components/Profile';
 import UserProfile from './components/Userprofile';
+import Resetpassword from './components/Resetpassword';
+import ResetOTP from './components/resetOTP';
+import Updatepassword from './components/Updatepassword';
 
 export const CommonContext = React.createContext();
 
@@ -20,6 +23,9 @@ function App() {
       <Routes>
         <Route path='/login' element= {<Login/>} />
         <Route path='/register' element={<Register/>}/>
+        <Route path='/resetpassword' element={<Resetpassword/>}/>
+        <Route path='/resetotp' element={<ResetOTP/>}/>
+        <Route path='/updatepassword' element={<Updatepassword/>}/>
         <Route path = '/Otp' element={<Otp/>}></Route>
         <Route path='/dashboard' element={ <ProdectedRoute> <Dashboard/> </ProdectedRoute> }  />
         <Route path='/profile' element={ <ProdectedRoute> <Profile/> </ProdectedRoute> }  />
