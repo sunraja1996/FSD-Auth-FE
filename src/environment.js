@@ -1,3 +1,3 @@
 export const env = {
-    apiurl: "http://localhost:8000"
+    apiurl: "https://auth-be-kw2c.onrender.com"
 }
